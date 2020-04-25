@@ -1,0 +1,28 @@
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras import utils
+from tensorflow.keras.preprocessing import image
+from google.colab import files
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+%matplotlib inline 
+
+(x_train_org, y_train_org), (x_test_org, y_test_org) = mnist.load_data()
+
+/*
+Можете попробовать запустить комментированный код(вы получите рукописную цифру под номером...)
+n = 12
+
+plt.imshow(Image.fromarray(x_train_org[n]).convert('RGBA'))
+plt.show()
+*/
+
+x_train = x_train_org.reshape(60000, 784)
+x_test = x_test_org.reshape(10000, 784)
+
+x_train = x_train.astype('float32')
+x_train = x_train / 255
+x_test = x_test.astype('float32')
+x_test = x_test / 255 
